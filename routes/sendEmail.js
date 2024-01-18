@@ -7,9 +7,9 @@ const schedule = require("node-schedule");
 console.log(process.env.EMAIL, process.env.EMAIL_PASS);
 
 
-routes.post("/sendEmail", async(req,res) => {
+routes.post("/sendEmail", async(req,res,emailArray) => {
     const { subject, text} = req.body;
-    const emailArray = ['kshitijgupta782@gmail.com', 'kshitijgupta153@gmail.com', 'kshitijgupta2907@gmail.com'];
+    // const emailArray = ['kshitijgupta782@gmail.com', 'kshitijgupta153@gmail.com', 'kshitijgupta2907@gmail.com'];
 
     if(!subject || !text){
         res.status(401).send({message: "Unprocessible entity"});
@@ -30,7 +30,7 @@ try{
         subject: subject,
         text: text
     }
-
+    
 
     //Schedule sending email
     // const date = new Date(Date.now() + 60 * 2000); // Current time + 1 minute in milliseconds
